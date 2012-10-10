@@ -1,0 +1,2 @@
+Django
+-e git://github.com/catalpainternational/simple_locations#egg=simple_locations
