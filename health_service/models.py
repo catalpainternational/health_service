@@ -57,7 +57,6 @@ class HealthFacility(models.Model):
             return False
 
     def get_children(self):
-        #import pdb; pdb.set_trace()
 
         children = self._default_manager.filter(parent=self)
         return children
