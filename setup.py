@@ -10,15 +10,13 @@ setup(
     version="0.0.1",
     author="Anders Hofstee",
     author_email="a.hofstee@catalpainternational.org",
-    description=("An demonstration of how to create, document, and publish "
-                                   "to the cheese shop a5 pypi.org."),
+    description=("Health Service model for Catlapa's projects."),
+    long_description=read('README.md'),
     license="BSD",
-    keywords="example documentation tutorial",
     url="http://www.github.com/catalpainternational/health_service",
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
