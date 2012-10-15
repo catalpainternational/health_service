@@ -1,5 +1,5 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -15,7 +15,9 @@ setup(
     license="BSD",
     keywords="example documentation tutorial",
     url="http://www.github.com/catalpainternational/health_service",
-    packages=['health_service', ],
+    packages=find_packages(),
+    include_package_data=True,
+    zip_safe=False,
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
