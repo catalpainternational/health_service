@@ -42,7 +42,7 @@ class HealthFacility(models.Model):
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=64, blank=True, null=False)
     type = models.ForeignKey(HealthFacilityType, blank=True, null=True)
- 
+
     class Meta:
         verbose_name = _("Health Facility")
         verbose_name_plural = _("Health Facilities")
@@ -69,13 +69,20 @@ class HealthFacility(models.Model):
                 descendants = descendants | child.descendants
         return descendants
 
+    def get_ancestors(self):
+        ancestors = self._default_manager.none()
+        facility = self.parent
+        while facility.is_child_node:
+            ancestors = ancestors | self._default_manager.filter(pk=facility.pk)
+            facility = facility.parent
+        return ancestors
+
     @property
     def is_child_node(self):
-        children = self._default_manager.filter(parent=self).count()
-        if children > 0:
-            return False
-        else:
+        if self.parent:
             return True
+        else:
+            return False
 
     @property
     def has_children(self):
@@ -86,9 +93,13 @@ class HealthFacility(models.Model):
             return False
 
     @property
-    def children(self,):
+    def children(self):
         return self.get_children()
 
     @property
-    def descendants(self,):
+    def descendants(self):
         return self.get_descendants()
+
+    @property
+    def ancestors(self):
+        return self.get_ancestors()
