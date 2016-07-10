@@ -15,6 +15,7 @@ class OwnershipType(models.Model):
     class Meta:
         verbose_name = _("Ownership Type")
         verbose_name_plural = _("Ownership Types")
+        app_label = 'health_service'
 
     def __unicode__(self):
         return self.name
@@ -27,6 +28,7 @@ class HealthFacilityType(models.Model):
     class Meta:
         verbose_name = _("Health Facility Type")
         verbose_name_plural = _("Health Facility Types")
+        app_label = 'health_service'
 
     def __unicode__(self):
         return self.name
@@ -36,7 +38,7 @@ class HealthFacility(models.Model):
     ownership_type = models.ForeignKey(OwnershipType, blank=True, null=True)
     location = models.ForeignKey(Point, null=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='facility')
-    catchment_areas = models.ManyToManyField(Area, null=True, blank=True, related_name='catchment+')
+    catchment_areas = models.ManyToManyField(Area, related_name='catchment+')
     area = models.ForeignKey(Area, null=True, blank=True, related_name='facility+',)
 
     name = models.CharField(max_length=100)
@@ -46,6 +48,7 @@ class HealthFacility(models.Model):
     class Meta:
         verbose_name = _("Health Facility")
         verbose_name_plural = _("Health Facilities")
+        app_label = 'health_service'
 
     def __unicode__(self):
         return u"%s %s" % (self.type, self.name)
