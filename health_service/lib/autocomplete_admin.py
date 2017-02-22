@@ -66,7 +66,7 @@ from django.db.models.query import QuerySet
 from django.utils.encoding import smart_str
 from django.utils.translation import ugettext as _
 from django.utils.text import get_text_list
-from django.conf.urls import patterns
+from django.conf.urls import url
 try:
     from django.utils.text import truncate_words
 except ImportError:
@@ -357,9 +357,9 @@ class FkAutocompleteAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         urls = super(FkAutocompleteAdmin,self).get_urls()
-        search_url = patterns('',
-            (r'^foreignkey_autocomplete/$', self.admin_site.admin_view(self.foreignkey_autocomplete))
-        )
+        search_url = [
+            url(r'^foreignkey_autocomplete/$', self.admin_site.admin_view(self.foreignkey_autocomplete))
+        ]
         return search_url + urls
 
     def foreignkey_autocomplete(self, request):
@@ -471,9 +471,9 @@ class NoLookupsForeignKeyAutocompleteAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         urls = super(NoLookupsForeignKeyAutocompleteAdmin,self).get_urls()
-        search_url = patterns('',
-            (r'^foreignkey_autocomplete/$', self.admin_site.admin_view(self.foreignkey_autocomplete))
-        )
+        search_url = [
+            url(r'^foreignkey_autocomplete/$', self.admin_site.admin_view(self.foreignkey_autocomplete))
+        ]
         return search_url + urls
 
     def foreignkey_autocomplete(self, request):

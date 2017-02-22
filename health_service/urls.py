@@ -5,9 +5,8 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-if settings.DEBUG == True:
-    urlpatterns = patterns('',
+if settings.DEBUG:
+    urlpatterns = [
         # Using this to serve static content under the dev server
-        (r'^site-media/(?P<path>.*)$', 'django.views.static.serve',
-            {'document_root': settings.STATICFILES_ROOT}),
-    )
+        url(r'^site-media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATICFILES_ROOT}),
+    ]
