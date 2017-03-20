@@ -54,7 +54,7 @@ class HealthFacility(models.Model):
         return u"%s %s" % (self.type, self.name)
 
     def is_root(self):
-        if self.parent == None:
+        if self.parent is None:
             return True
         else:
             return False
