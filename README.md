@@ -1,7 +1,12 @@
 health_service
 ==============
 
-#### Uploading a new version to PyPi
+A simple hierarchical models collection to describe Health services facilities and sub-facilities, with optional GIS location support.
+Depends on catalpainternational/simple_locations
+
+
+Uploading a new version to PyPi
+-------------------------------
 
 * Bump `setup.py` to a new version
 * Create a git tag for this version: `git tag <version_number>`
