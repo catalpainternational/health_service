@@ -39,7 +39,7 @@ class HealthFacility(models.Model):
     location = models.ForeignKey(Point, null=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='facility')
     catchment_areas = models.ManyToManyField(Area, related_name='catchment+')
-    area = models.ForeignKey(Area, null=True, blank=True, related_name='facility+',)
+    area = models.ForeignKey(Area, null=True, blank=True, related_name='healthfacility',)
 
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=64, blank=True, null=False)
@@ -60,7 +60,6 @@ class HealthFacility(models.Model):
             return False
 
     def get_children(self):
-
         children = self._default_manager.filter(parent=self)
         return children
 
