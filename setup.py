@@ -7,10 +7,10 @@ def read(fname):
 
 setup(
     name="health_service",
-    version="1.2",
+    version="1.2.1",
     author="Anders Hofstee",
     author_email="a.hofstee@catalpainternational.org",
-    description=("Health Service model for Catlapa's projects."),
+    description=("Health Service model for Catalpa's projects."),
     long_description=read('README.md'),
     license="BSD",
     url="http://www.github.com/catalpainternational/health_service",
@@ -18,7 +18,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Stable",
         "Topic :: Utilities",
         "License :: OSI Approved :: BSD License",
     ],
