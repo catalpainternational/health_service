@@ -104,7 +104,7 @@ class FkSearchInput(ForeignKeyRawIdWidget):
 
     def label_for_value(self, value):
         key = self.rel.get_related_field().name
-        obj = self.rel.to._default_manager.get(**{key: value})
+        obj = self.rel.to.objects.get(**{key: value})
         return truncate_words(obj, 14)
 
     def __init__(self, rel, search_fields, attrs=None):
@@ -182,7 +182,7 @@ class NoLookupsForeignKeySearchInput(ForeignKeyRawIdWidget):
 
     def label_for_value(self, value):
         key = self.rel.get_related_field().name
-        obj = self.rel.to._default_manager.get(**{key: value})
+        obj = self.rel.to.objects.get(**{key: value})
         return truncate_words(obj, 14)
 
     def __init__(self, rel, search_fields, attrs=None):
@@ -258,7 +258,7 @@ class InlineSearchInput(ForeignKeyRawIdWidget):
 
     def label_for_value(self, value):
         key = self.rel.get_related_field().name
-        obj = self.rel.to._default_manager.get(**{key: value})
+        obj = self.rel.to.objects.get(**{key: value})
         return truncate_words(obj, 14)
 
     def __init__(self, rel, search_fields, attrs=None):
@@ -388,7 +388,7 @@ class FkAutocompleteAdmin(admin.ModelAdmin):
                 else:
                     return "%s__icontains" % field_name
             model = models.get_model(app_label, model_name)
-            queryset = model._default_manager.all()
+            queryset = model.objects.all()
             data = ''
             if query:
                 for bit in query.split():
@@ -502,7 +502,7 @@ class NoLookupsForeignKeyAutocompleteAdmin(admin.ModelAdmin):
                 else:
                     return "%s__icontains" % field_name
             model = models.get_model(app_label, model_name)
-            queryset = model._default_manager.all()
+            queryset = model.objects.all()
             data = ''
             if query:
                 for bit in query.split():
@@ -619,7 +619,7 @@ class InlineAutocompleteAdmin(admin.TabularInline):
                 else:
                     return "%s__icontains" % field_name
             model = models.get_model(app_label, model_name)
-            queryset = model._default_manager.all()
+            queryset = model.objects.all()
             data = ''
             if query:
                 for bit in query.split():
