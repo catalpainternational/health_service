@@ -73,6 +73,8 @@ class HealthFacility(models.Model):
 
     def get_ancestors(self):
         ancestors = self.__class__.objects.none()
+        if not self.parent:
+            return ancestors
         facility = self.parent
         while facility.is_child_node:
             ancestors = ancestors | self.__class__.objects.filter(pk=facility.pk)
