@@ -7,7 +7,7 @@ def read(fname):
 
 setup(
     name="health_service",
-    version="1.2.1",
+    version="1.3.0",
     author="Anders Hofstee",
     author_email="a.hofstee@catalpainternational.org",
     description=("Health Service model for Catalpa's projects."),
