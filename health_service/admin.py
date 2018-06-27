@@ -2,8 +2,12 @@ from django.contrib import admin
 
 from health_service.models import HealthFacilityType, HealthFacility
 from health_service.models import OwnershipType
-from health_service.lib.autocomplete_admin import FkAutocompleteAdmin
 
+try:
+    # optionally use django_extensions' ForeignKeyAutocompleteAdmin if available
+    from django_extensions.admin import ForeignKeyAutocompleteAdmin
+except ImportError:
+    ForeignKeyAutocompleteAdmin = admin.ModelAdmin
 
 class OwnershipTypeAdmin(admin.ModelAdmin):
     model = OwnershipType
@@ -13,7 +17,7 @@ class HealthFacilityTypeAdmin(admin.ModelAdmin):
     model = HealthFacilityType
 
 
-class HealthFacilityAdmin(FkAutocompleteAdmin):
+class HealthFacilityAdmin(ForeignKeyAutocompleteAdmin):
     model = HealthFacility
     fields = ['name', 'code', 'type', 'area', 'parent',]
     list_filter = ('type',)
