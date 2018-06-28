@@ -1,14 +1,23 @@
-health_service
-==============
+##health_service
 
 A simple hierarchical models collection to describe Health services facilities and sub-facilities, with optional GIS location support.
 Depends on catalpainternational/simple_locations
 
 
-Uploading a new version to PyPi
--------------------------------
+####Changelog
 
-* Bump `setup.py` to a new version
-* Create a git tag for this version: `git tag <version_number>`
-* Push the tag to github `git push origin <version_number>`
-* Upload the new version to PyPi: `python setup.py sdist upload`
+  * Version 1.3.1
+    - fix admin interface by removing old code and using django_extensions' ForeignKeyAutocompleteAdmin if available
+    - override aforementioned ForeignKeyAutocompleteAdmin template avoid broken and repeated icon in Django 1.11 
+  * Version 1.3.0
+    - Compatibility with Django 1.11
+  * Version 1.2.1
+    - Change the related_name for HealthFacility->Area so that it creates a backward relation in the ORM
+    - Add LICENSE file
+
+####Uploading a new version to PyPi
+
+  * Bump `setup.py` to a new version
+  * Create a git tag for this version: `git tag <version_number>`
+  * Push the tag to github `git push origin <version_number>`
+  * Upload the new version to PyPi: `python setup.py sdist upload`

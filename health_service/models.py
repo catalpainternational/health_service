@@ -60,7 +60,7 @@ class HealthFacility(models.Model):
             return False
 
     def get_children(self):
-        children = self._default_manager.filter(parent=self)
+        children = self.__class__.objects.filter(parent=self)
         return children
 
     def get_descendants(self):
@@ -72,10 +72,12 @@ class HealthFacility(models.Model):
         return descendants
 
     def get_ancestors(self):
-        ancestors = self._default_manager.none()
+        ancestors = self.__class__.objects.none()
+        if not self.parent:
+            return ancestors
         facility = self.parent
         while facility.is_child_node:
-            ancestors = ancestors | self._default_manager.filter(pk=facility.pk)
+            ancestors = ancestors | self.__class__.objects.filter(pk=facility.pk)
             facility = facility.parent
         return ancestors
 
@@ -88,7 +90,7 @@ class HealthFacility(models.Model):
 
     @property
     def has_children(self):
-        children = self._default_manager.filter(parent=self).count()
+        children = self.__class__.objects.filter(parent=self).count()
         if children > 0:
             return True
         else:
