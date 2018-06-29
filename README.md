@@ -6,6 +6,8 @@ Depends on catalpainternational/simple_locations
 
 ####Changelog
 
+  * Version 1.3.2
+    - fix MANIFEST.in so that it'll include templates and other files
   * Version 1.3.1
     - fix admin interface by removing old code and using django_extensions' ForeignKeyAutocompleteAdmin if available
     - override aforementioned ForeignKeyAutocompleteAdmin template avoid broken and repeated icon in Django 1.11 
