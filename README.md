@@ -1,11 +1,13 @@
-##health_service
+## health_service
 
 A simple hierarchical models collection to describe Health services facilities and sub-facilities, with optional GIS location support.
 Depends on catalpainternational/simple_locations
 
 
-####Changelog
+#### Changelog
 
+  * Version 1.3.3
+    - quality of life improvents in admin view, add HealthFacility children inline
   * Version 1.3.2
     - fix MANIFEST.in so that it'll include templates and other files
   * Version 1.3.1
@@ -17,7 +19,7 @@ Depends on catalpainternational/simple_locations
     - Change the related_name for HealthFacility->Area so that it creates a backward relation in the ORM
     - Add LICENSE file
 
-####Uploading a new version to PyPi
+#### Uploading a new version to PyPi
 
   * Bump `setup.py` to a new version
   * Create a git tag for this version: `git tag <version_number>`
