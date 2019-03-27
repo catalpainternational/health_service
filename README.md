@@ -6,6 +6,8 @@ Depends on catalpainternational/simple_locations
 
 #### Changelog
 
+  * Version 1.3.4
+    - fix HealthFacility children inlining (code was doing something... unrelated that was breaking saves)
   * Version 1.3.3
     - quality of life improvents in admin view, add HealthFacility children inline
   * Version 1.3.2
