@@ -38,7 +38,7 @@ class HealthFacility(models.Model):
     ownership_type = models.ForeignKey(OwnershipType, blank=True, null=True)
     location = models.ForeignKey(Point, null=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='facility')
-    catchment_areas = models.ManyToManyField(Area, related_name='catchment+')
+    catchment_areas = models.ManyToManyField(Area, null=True, blank=True, related_name='catchment+')
     area = models.ForeignKey(Area, null=True, blank=True, related_name='healthfacility',)
 
     name = models.CharField(max_length=100)
@@ -90,11 +90,7 @@ class HealthFacility(models.Model):
 
     @property
     def has_children(self):
-        children = self.__class__.objects.filter(parent=self).count()
-        if children > 0:
-            return True
-        else:
-            return False
+        return self.__class__.objects.filter(parent=self).exists()
 
     @property
     def children(self):
