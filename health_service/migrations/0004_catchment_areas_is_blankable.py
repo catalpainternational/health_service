@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='healthfacility',
             name='catchment_areas',
-            field=models.ManyToManyField(blank=True, null=True, related_name='_healthfacility_catchment_areas_+', to='simple_locations.Area'),
+            field=models.ManyToManyField(blank=True, related_name='_healthfacility_catchment_areas_+', to='simple_locations.Area'),
         ),
     ]
