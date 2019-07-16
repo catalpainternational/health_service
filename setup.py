@@ -7,9 +7,9 @@ def read(fname):
 
 setup(
     name="health_service",
-    version="1.3.4",
+    version="1.3.5",
     author="Anders Hofstee",
-    author_email="a.hofstee@catalpainternational.org",
+    author_email="engineering@catalpa.io",
     description=("Health Service model for Catalpa's projects."),
     long_description=read('README.md'),
     license="BSD",

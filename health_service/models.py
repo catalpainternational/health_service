@@ -38,7 +38,7 @@ class HealthFacility(models.Model):
     ownership_type = models.ForeignKey(OwnershipType, blank=True, null=True)
     location = models.ForeignKey(Point, null=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='facility')
-    catchment_areas = models.ManyToManyField(Area, null=True, blank=True, related_name='catchment+')
+    catchment_areas = models.ManyToManyField(Area, blank=True, related_name='catchment+')
     area = models.ForeignKey(Area, null=True, blank=True, related_name='healthfacility',)
 
     name = models.CharField(max_length=100)

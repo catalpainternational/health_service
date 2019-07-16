@@ -6,6 +6,8 @@ Depends on catalpainternational/simple_locations
 
 #### Changelog
 
+  * Version 1.3.5
+    - fix fields.W340 warning
   * Version 1.3.4
     - fix HealthFacility children inlining (code was doing something... unrelated that was breaking saves)
   * Version 1.3.3
