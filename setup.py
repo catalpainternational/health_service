@@ -5,9 +5,10 @@ from setuptools import setup, find_packages
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+
 setup(
     name="health_service",
-    version="1.3.5",
+    version="1.4.0",
     author="Anders Hofstee",
     author_email="engineering@catalpa.io",
     description=("Health Service model for Catalpa's projects."),
