@@ -17,6 +17,9 @@ class OwnershipType(models.Model):
         verbose_name_plural = _("Ownership Types")
         app_label = 'health_service'
 
+    def __str__(self):
+        return self.name
+
     def __unicode__(self):
         return self.name
 
@@ -29,6 +32,9 @@ class HealthFacilityType(models.Model):
         verbose_name = _("Health Facility Type")
         verbose_name_plural = _("Health Facility Types")
         app_label = 'health_service'
+
+    def __str__(self):
+        return self.name
 
     def __unicode__(self):
         return self.name
@@ -49,6 +55,9 @@ class HealthFacility(models.Model):
         verbose_name = _("Health Facility")
         verbose_name_plural = _("Health Facilities")
         app_label = 'health_service'
+
+    def __str__(self):
+        return u"%s %s" % (self.type, self.name)
 
     def __unicode__(self):
         return u"%s %s" % (self.type, self.name)
