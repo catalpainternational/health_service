@@ -41,15 +41,15 @@ class HealthFacilityType(models.Model):
 
 
 class HealthFacility(models.Model):
-    ownership_type = models.ForeignKey(OwnershipType, blank=True, null=True)
-    location = models.ForeignKey(Point, null=True, blank=True)
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='facility')
+    ownership_type = models.ForeignKey(OwnershipType, blank=True, null=True, on_delete=models.SET_NULL)
+    location = models.ForeignKey(Point, null=True, blank=True, on_delete=models.SET_NULL)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='facility', on_delete=models.SET_NULL)
     catchment_areas = models.ManyToManyField(Area, blank=True, related_name='catchment+')
-    area = models.ForeignKey(Area, null=True, blank=True, related_name='healthfacility',)
+    area = models.ForeignKey(Area, null=True, blank=True, related_name='healthfacility', on_delete=models.SET_NULL)
 
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=64, blank=True, null=False)
-    type = models.ForeignKey(HealthFacilityType, blank=True, null=True)
+    type = models.ForeignKey(HealthFacilityType, blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = _("Health Facility")
